@@ -232,20 +232,20 @@ function DashboardContent() {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper>
-                <Search setDataFromInput={setDataFromInput} />
-              </Paper>
-            </Grid>
             <Grid container spacing={3}>
+              <Grid item xs={12} mt={2}>
+                <Paper>
+                  <Search setDataFromInput={setDataFromInput} />
+                </Paper>
+              </Grid>
               {/* Chart */}
-              <Grid item xs={12}>
+              <Grid item xs={12} md={8} lg={9}>
                 <Paper
                   sx={{
                     p: 2,
                     display: "flex",
                     flexDirection: "column",
-                    height: 700,
+                    height: 350,
                   }}
                 >
                   <Chart
@@ -257,24 +257,24 @@ function DashboardContent() {
                 </Paper>
               </Grid>
               {/* Recent Deposits */}
-              {/* <Grid item xs={12} md={4} lg={3}>
+              <Grid item xs={12} md={4} lg={3}>
                 <Paper
                   sx={{
                     p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
+                    display: "flex",
+                    flexDirection: "column",
+                    height: 350,
                   }}
                 >
                   <Deposits />
                 </Paper>
-              </Grid> */}
+              </Grid>
               {/* Recent Orders */}
-              {/* <Grid item xs={12}>
+              <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Orders />
+                  <Orders newsData={newsData} />
                 </Paper>
-              </Grid> */}
+              </Grid>
             </Grid>
             {/* <Copyright sx={{ pt: 4 }} /> */}
           </Container>
