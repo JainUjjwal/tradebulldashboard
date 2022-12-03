@@ -26,4 +26,24 @@ async function getStockNews(options) {
   const resp = await alpaca.getNews(options);
   return resp;
 }
-module.exports = { getHistoricalBars, getLatestBars, getStockNews };
+
+async function getAccountInformation() {
+  const resp = await alpaca.getAccount();
+  return resp;
+}
+async function getAllOrders(options) {
+  const resp = await alpaca.getOrders(options);
+  return resp;
+}
+async function getAccountPositions() {
+  const resp = await alpaca.getPositions();
+  return resp;
+}
+module.exports = {
+  getHistoricalBars,
+  getLatestBars,
+  getStockNews,
+  getAccountInformation,
+  getAllOrders,
+  getAccountPositions,
+};

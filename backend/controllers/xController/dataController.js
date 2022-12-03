@@ -44,5 +44,44 @@ const getNewsDataForStockTicker = async (req, res) => {
     }
   });
 };
+const getAccountInformationForUser = (req, res) => {
+  grabData.getAccountInformation().then((data) => {
+    if (data) {
+      res.status(200).send(data);
+    } else {
+      res.status(400).send("Error");
+    }
+  });
+};
 
-module.exports = { getDataForStockTicker, getNewsDataForStockTicker };
+const getOrderInformation = (req, res) => {
+  const options = {
+    status: "all",
+    after: new Date(req.query.startTime),
+    until: new Date(req.query.endTime),
+  };
+  grabData.getAllOrders(options).then((data) => {
+    if (data) {
+      res.status(200).send(data);
+    } else {
+      res.status(400).send("Error");
+    }
+  });
+};
+
+const getAccountPositionsForUser = (req, res) => {
+  grabData.getAccountPositions().then((data) => {
+    if (data) {
+      res.status(200).send(data);
+    } else {
+      res.status(400).send("Error");
+    }
+  });
+};
+module.exports = {
+  getDataForStockTicker,
+  getNewsDataForStockTicker,
+  getAccountInformationForUser,
+  getOrderInformation,
+  getAccountPositionsForUser,
+};

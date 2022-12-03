@@ -1,21 +1,24 @@
-import * as React from 'react';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
-import Title from './Title';
+import * as React from "react";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
+import Title from "./Title";
 
 function preventDefault(event) {
   event.preventDefault();
 }
 
-export default function Deposits() {
+export default function Deposits(props) {
   return (
     <React.Fragment>
-      <Title>Recent Deposits</Title>
-      <Typography component="p" variant="h4">
-        $3,024.00
+      <Title>Account Information</Title>
+      <Typography component="p" variant="h5">
+        Buying Power:{" "}
+        {props.accountData
+          ? `$${props.accountData.buying_power}`
+          : "Fetching Data"}
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }}>
-        on 15 March, 2019
+        Cash: {props.accountData ? props.accountData.cash : "Fetching Data"}
       </Typography>
       <div>
         <Link color="primary" href="#" onClick={preventDefault}>

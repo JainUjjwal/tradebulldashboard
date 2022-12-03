@@ -9,7 +9,6 @@ function preventDefault(event) {
 }
 
 export default function Orders(props) {
-  console.log(props);
   return (
     <React.Fragment>
       <Title>Recent News</Title>

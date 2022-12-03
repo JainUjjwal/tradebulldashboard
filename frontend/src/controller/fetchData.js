@@ -43,3 +43,9 @@ export const fetchNewsData = async (ticker, startTime, endTime) => {
   };
   return await axios.get(url + "/getNews", { params: params });
 };
+export const fetchPositionData = async () => {
+  return await axios.get(url + "/getPositions");
+};
+export const fetchAccountData = async () => {
+  return await axios.get(url + "/getAccount");
+};

@@ -49,7 +49,7 @@ export default function Chart(props) {
       <Container>
         <Grid container spacing={3}>
           <Grid item>
-            <Title>Chart</Title>
+            <Title>OHLC Graph</Title>
           </Grid>
           <Grid item></Grid>
         </Grid>

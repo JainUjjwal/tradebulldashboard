@@ -26,7 +26,10 @@ import {
   fetchData,
   formatData,
   fetchNewsData,
+  fetchPositionData,
+  fetchAccountData,
 } from "../../controller/fetchData";
+import Positions from "./Positions";
 
 function Copyright(props) {
   return (
@@ -97,6 +100,8 @@ const mdTheme = createTheme();
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
   const [data, setData] = React.useState(null);
+  const [accountData, setAccountData] = React.useState(null);
+  const [positions, setPositions] = React.useState(null);
   const [newsData, setNewsData] = React.useState(null);
   const [symbol, setSymbol] = React.useState("");
   const [error, setError] = React.useState(false);
@@ -159,6 +164,23 @@ function DashboardContent() {
         });
     }
   };
+
+  const getPositionData = () => {
+    fetchPositionData().then((res) => {
+      setPositions(res.data);
+    });
+  };
+
+  const getAccountInformation = () => {
+    fetchAccountData().then((res) => {
+      setAccountData(res.data);
+    });
+  };
+
+  React.useEffect(() => {
+    getPositionData();
+    getAccountInformation();
+  }, []);
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -266,10 +288,15 @@ function DashboardContent() {
                     height: 350,
                   }}
                 >
-                  <Deposits />
+                  <Deposits accountData={accountData} />
                 </Paper>
               </Grid>
-              {/* Recent Orders */}
+              <Grid item xs={12}>
+                <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
+                  <Positions positions={positions} />
+                </Paper>
+              </Grid>
+              {/* Recent News */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
                   <Orders newsData={newsData} />
